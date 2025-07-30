@@ -1825,13 +1825,13 @@ async def on_ready():
     if not  company_income_loop.is_running():
         company_income_loop.start()
 
-
+token = os.getenv("DISCORD_TOKEN")
 
 async def main():
     try:
         for file, lock in [(DATA_FILE, data_lock), (COMPANY_FILE, company_lock), (STOCK_FILE, stock_lock), (USER_STOCK_FILE, user_stock_lock)]:
             await ensure_file_exists(file)
-        await bot.start("MTM5MDIzNTUyMDA2MzI0NjM1Nw.Gd7uUR.3DDDZFbG7JTB2b0vtEIUqEVQ28srYwVv6hYBXU")
+        await bot.start(token)
     except Exception as e:
         print(f"Bot stopped with exception: {e}")
 
